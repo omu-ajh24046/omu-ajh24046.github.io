@@ -16,12 +16,14 @@
             var seconds = now.getSeconds();
             
             // 1桁の場合は0を付ける
+            if (months < 10) months = '0' + months;
+            if (dates < 10) dates = '0' + dates
             if (hours < 10) hours = '0' + hours;
             if (minutes < 10) minutes = '0' + minutes;
             if (seconds < 10) seconds = '0' + seconds;
             
             // 時刻を表示
-            var dateString = years + '/' + months + '/' + dates '/';
+            var dateString = years + '/' + months + '/' + dates;
             var timeString = hours + ':' + minutes + ':' + seconds;
             document.getElementById('Date').innerHTML = dateString;
             document.getElementById('clock').innerHTML = timeString;
