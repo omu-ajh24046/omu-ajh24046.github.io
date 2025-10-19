@@ -4,10 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML練習場所_2ページ目！</title>
+    <script>
+        function judge_BMI() {
+            //BMIを取得
+            var BMIj = document.getElementById('bmi');
+            var jedge= '';
+
+            //判定
+            if (BMIj < 18.5) jedge = '低体重';
+            if (18.5  <= BMIj < 25) jedge = '標準';
+            if (25 <= BMIj) jedge = '肥満';
+
+            var result = jedge;
+            document.getElementById('BMI_result').innerHTML = result;            
+        }
+
+        setInterval(judge_BMI, 1000);
+
+        window.onload = judge_BMI;
+    </script>
 </head>
 <body>
     <h1>BMIの計算</h1>
-    
+    <div>
+    <form oninput="bmi.value = Math.round(Number(weight.value) / Math.pow(Number(height.value)/100, 2) * 10) / 10">
+        <p><label>体重(kg)：<input name="weight" type="number" step="any"></label></p>
+        <p><label>身長(cm)：<input name="height" type="number" step="any"></label></p>
+        <p><label>BMI：<output name="bmi"></output></label></p>
+    </form>
+    <p id ="BMI_result" style="font-size: 48px; font-weight: bold; color: red;">
+            判定中
+    </p>
+    </div>
     
     <div>
        <img src="school_kokuban_happyou_tenkousei_man.png" width="300" alt="トップ画像">
