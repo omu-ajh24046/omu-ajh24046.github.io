@@ -7,7 +7,7 @@
     <script>
         function judge_BMI() {
             //BMIを取得
-            var BMIj = document.getElementById('bmi.value');
+            var BMIj = document.getElementById('BMI').value;
             var jedge= '';
 
             //判定
@@ -26,7 +26,7 @@
     <form oninput="bmi.value = Math.round(Number(weight.value) / Math.pow(Number(height.value)/100, 2) * 10) / 10">
         <p><label>体重(kg)：<input name="weight" type="number" step="any"></label></p>
         <p><label>身長(cm)：<input name="height" type="number" step="any"></label></p>
-        <p><label>BMI：<output name="bmi"></output></label></p>
+        <p><label>BMI：<output name="bmi" id = "BMI"></output></label></p>
     </form>
     <p>
         <button onclick="judge_BMI()">診断します</button>
