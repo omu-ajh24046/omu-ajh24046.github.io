@@ -18,10 +18,6 @@
             var result = jedge;
             document.getElementById('BMI_result').innerHTML = result;            
         }
-
-        setInterval(judge_BMI, 1000);
-
-        window.onload = judge_BMI;
     </script>
 </head>
 <body>
@@ -32,6 +28,9 @@
         <p><label>身長(cm)：<input name="height" type="number" step="any"></label></p>
         <p><label>BMI：<output name="bmi"></output></label></p>
     </form>
+    <p>
+        <button onclick="judge_BMI()">診断します</button>
+    </p>
     <p id ="BMI_result" style="font-size: 48px; font-weight: bold; color: red;">
             判定中
     </p>
