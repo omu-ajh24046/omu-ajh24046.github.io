@@ -7,8 +7,7 @@
     <script>
         function judge_BMI() {
             //BMIを取得
-            var BMIj = 30;
-            //var BMIj = document.getElementById('bmi');
+            var BMIj = document.getElementById('bmi');
             var jedge= '';
 
             //判定
@@ -16,7 +15,7 @@
             if (18.5  <= BMIj && BMIj < 25) jedge = '標準';
             if (25 <= BMIj) jedge = '肥満';
 
-            var result = jedge;
+            var result = BMIj;
             document.getElementById('BMI_result').innerHTML = result;            
         }
     </script>
