@@ -15,8 +15,7 @@
             if (18.5  <= BMIj < 25) jedge = '標準';
             if (25 <= BMIj) jedge = '肥満';
 
-            var result = jedge;
-            document.getElementById('BMI_result').innerHTML = result;            
+            document.getElementById('BMI_result').innerHTML = judge;            
         }
 
         setInterval(judge_BMI, 1000);
