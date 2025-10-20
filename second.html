@@ -12,7 +12,7 @@
 
             //判定
             if (20 <= BMIj && BMIj < 25) judge = '低体重';
-            if (BMIj < 20) judge = '標準';
+            if (0 < BMIj && BMIj < 20) judge = 'なんで？';
             if (25 <= BMIj) judge = '肥満';
 
             var result = judge;
