@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML練習場所_2ページ目！</title>
+    <script>
+        function judge_BMI() {
+            //BMIを取得
+            var BMIj = document.getElementById('BMI').value;
+            var jedge= '';
+
+            //判定
+            if (BMIj < 18.5) jedge = '低体重';
+            if (18.5  <= BMIj && BMIj < 25) jedge = '標準';
+            if (25 <= BMIj) jedge = '肥満';
+
+            var result = jedge;
+            document.getElementById('BMI_result').innerHTML = result;            
+        }
+    </script>
+</head>
+<body>
+    <h1>BMIの計算</h1>
+    <div>
+    <form oninput="bmi.value = Math.round(Number(weight.value) / Math.pow(Number(height.value)/100, 2) * 10) / 10">
+        <p><label>体重(kg)：<input name="weight" type="number" step="any"></label></p>
+        <p><label>身長(cm)：<input name="height" type="number" step="any"></label></p>
+        <p><label>BMI：<output name="bmi" id = "BMI"></output></label></p>
+    </form>
+    <p>
+        <button onclick="judge_BMI()">診断します</button>
+    </p>
+    <p id ="BMI_result" style="font-size: 48px; font-weight: bold; color: red;">
+            判定中
+    </p>
+    </div>
+    
+    <div>
+       <img src="school_kokuban_happyou_tenkousei_man.png" width="300" alt="トップ画像">
+        <br><b><span style="color:red;">地元のいい景色の場所を紹介します</span></b>
+    </div>
+    <h2>テスト（１）</h2>
+    <form oninput='x.value = function(txt){ return txt.split("").reverse().join("")}(my_text2.value)'>
+        <input id="my_text2">
+        <output id="x"></output>
+    </form>
+    <h3>テスト（２）</h3>
+    <form onsubmit="return false">
+        <input type="number" id="num01"> 演算
+        <input type="number" id="num02"> =
+        <output for="num01 num02" id="result0"></output>
+    
+        <!-- ラジオボタン選択肢 -->
+        <input id="plus" type="radio" name="cal0" value="+" checked>
+        <label for="plus">足す</label>
+        <input id="minus" type="radio" name="cal0" value="-">
+        <label for="minus">引く</label>
+        <!-- ラジオボタンに2つ追加 -->
+        <input id="multiply" type="radio" name="cal0" value="*">
+        <label for="multiply">掛ける</label>
+        <input id="divide" type="radio" name="cal0" value="/">
+        <label for="divide">割る</label>
+
+    
+        <!-- ボタンのonclick属性を修正 -->
+        <button onclick="result0.value = 
+            (cal0[0].checked)? Number(num01.value) + Number(num02.value) :
+            (cal0[1].checked)? Number(num01.value) - Number(num02.value) :
+            (cal0[2].checked)? Number(num01.value) * Number(num02.value) :
+            (cal0[3].checked)? Number(num01.value) / Number(num02.value) : NaN">計算</button>
+    </form>
+    <a href="index.html">1ページ目へ</a>
+</body>
+</html>
