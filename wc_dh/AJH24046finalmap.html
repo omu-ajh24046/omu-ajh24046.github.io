@@ -119,7 +119,32 @@
                         )
                         .addTo(map);
                     L.geoJSON(json).addTo(markers); // クラスタリングレイヤーにGeoJSONデータをセット
-                });                
+                });
+
+                        // 行政区域レイヤーを作成
+            fetch("./N03-23_27_230101.geojson") // 行政区域データを非同期読み込み
+                .then((response) => response.json())
+                .then((data) => {
+                    // 特定の値によりGeoJSONをフィルタリング
+                    var filteredData = data.features.filter(feature => feature.properties.N03_004 === '茨木市');
+                    var selected_area = L.geoJSON(filteredData)
+                        .bindPopup((layer) => layer.feature.properties.N03_004) // ポップアップで表示
+                    map.addLayer(selected_area)
+                    // チェックボックス
+                    LayerControl.addOverlay(selected_area, "行政区域")
+                    // GeoJSONレイヤに地図がフィットするように表示範囲を自動調整
+                    map.fitBounds(selected_area.getBounds());
+            });
+
+            fetch('./P04-20_27.geojson') // 大阪府の病院のデータのGeoJSONを非同期読み込み
+            	.then((res) => res.json())
+            	.then((json) => {
+            	// GeoJSONレイヤーを作成
+            	L.geoJSON(json)
+            		.bindPopup((layer) => layer.feature.properties.P04_002)    // ポップアップで学校名を表示
+            		.addTo(map);  
+            	});
+            
 
         </script>
     </body>
