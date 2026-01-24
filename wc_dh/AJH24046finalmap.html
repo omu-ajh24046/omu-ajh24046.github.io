@@ -136,19 +136,23 @@
                     map.fitBounds(selected_area.getBounds());
             });
 
-            fetch('./P04-20_27.geojson') // 大阪府の病院のデータのGeoJSONを非同期読み込み
-            	.then((res) => res.json())
+            fetch("P04-20_27.geojson")
+                .then((response) => response.json())
                 .then((data) => {
-                    // 特定の値によりGeoJSONをフィルタリング
-                    var filteredData = data.features.filter(feature => feature.properties.P04_003 === '茨木市');
-                    var selected_area = L.geoJSON(filteredData)
-                        .bindPopup((layer) => layer.feature.properties.P04_002) // ポップアップで表示
-                    map.addLayer(selected_area)
-                    // チェックボックス
-                    LayerControl.addOverlay(selected_area, "茨木市の病院")
-                    
-            
+                //茨木市のデータをフィルタリング
+                    var ibarakiClinics = data.features.filter(feature => {
+                        return feature.properties.P04_003 && feature.properties.P04_003.includes("茨木市");
+                    });
 
+                    //GeoJSONレイヤーを作成
+                    var ibarakiLayer = L.geoJSON(ibarakiClinics)
+                        // 絞り込んだデータを使って地図に表示
+                        .bindPopup((layer) => layer.feature.properties.P04_002)
+                        .addTo(map);
+                    //レイヤーコントロールに追加
+                    LayerControl.addOverlay(ibarakiLayer, "茨木市の医療機関");
+                });
+    
         </script>
     </body>
 </html>
